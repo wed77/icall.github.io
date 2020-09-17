@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<!--
+	Arcana by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Left Sidebar - Arcana by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Logo -->
+						<h1><a href="index.html" id="logo">INSTITUTION CLASSIQUE ANTOINE LYBRUN</a></h1>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li>
+								<a href="qsmn.html">QUI SOMMES NOUS?</a></li>
+									
+										
+										<li><a href="inscrip.html">INSCRIPTION EN LIGNE</a></li>
+									
+								</li>
+								<li class="current"><a href="left-sidebar.html">ANNUAIRE</a></li>
+								<li><a href="right-sidebar.html">NOTRE PROGRAMME</a></li>
+								<li><a href="two-sidebar.html">POURQUOI ICAL?</a></li>
+								<li><a href="no-sidebar.html">CONTACT</a></li>
+							</ul>
+                     </nav>
+
+				</div>
+
+			<!-- Main -->
+					<div>
+				kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+				llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
+				
+				<?php // Connexion à MySQL mysql_connect("localhost", "sdz", "mot_de_passe"); mysql_select_db("coursphp"); // ------// ÉTAPE 1 : on vérifie si l'IP se trouve déjà dans la table. // Pour faire ça, on n'a qu'à compter le nombre d'entrées dont le champ "ip" est l'adresse IP du visiteur. $retour = mysql_query('SELECT COUNT(*) AS nbre_entrees FROM connectes WHERE ip=\'' . $_SERVER['REMOTE_ADDR'] . '\''); $donnees = mysql_fetch_array($retour); if ($donnees['nbre_entrees'] == 0) // L'IP ne se trouve pas dans la table, on va l'ajouter. {    mysql_query('INSERT INTO connectes VALUES(\'' . $_SERVER['REMOTE_ADDR'] . '\', ' . time() . ')'); } else // L'IP se trouve déjà dans la table, on met juste à jour le timestamp. {    mysql_query('UPDATE connectes SET timestamp=' . time() . ' WHERE ip=\'' . $_SERVER['REMOTE_ADDR'] . '\''); } // ------// ÉTAPE 2 : on supprime toutes les entrées dont le timestamp est plus vieux que 5 minutes. // On stocke dans une variable le timestamp qu'il était il y a 5 minutes : $timestamp_5min = time() - (60 * 5); // 60 * 5 = nombre de secondes écoulées en 5 minutes mysql_query('DELETE FROM connectes WHERE timestamp < ' . $timestamp_5min); // ------// ÉTAPE 3 : on compte le nombre d'IP stockées dans la table. C'est le nombre de visiteurs connectés. $retour = mysql_query('SELECT COUNT(*) AS nbre_entrees FROM connectes'); $donnees = mysql_fetch_array($retour);
+// Ouf ! On n'a plus qu'à afficher le nombre de connectés ! echo '<p>Il y a actuellement ' . $donnees['nbre_entrees'] . '
+ Affichez le nombre de visiteurs connectés 5/7
+www.openclassrooms.com
+visiteurs connectés sur mon site !</p>'; ?>
+Comme vous pouvez le voir, le script respecte strictement les étapes que je vous ai indiquées au début de ce TP. Il y a seulement 2 points où il fallait un peu réfléchir (rien de bien méchant  ). V oici quelques informations pour vous aider à les comprendre : Vérifier si l'IP du visiteur se trouve déjà dans la table : on peut le faire de plusieurs manières ; celle qui me semble la plus simple et la plus logique est de compter le nombre de fois où cette IP apparaît dans la table. Deux réponses sont possibles : 0 fois : l'IP ne se trouve pas dans la table, c'est donc un nouveau visiteur qui vient d'arriver. 1 fois : l'IP se trouve déjà dans la table, c'est un visiteur qui était déjà sur le site et qui vient de charger une nouvelle page. On met juste à jour son timestamp pour se rappeler que ce visiteur a récemment chargé une page sur votre site. Supprimer les timestamp vieux de plus de 5 minutes : c'est assez simple quand on y pense, mais il fallait trouver le truc. En fait, on fait une requête SQL dans laquelle on demande de supprimer toutes les entrées dont le timestamp est inférieur au timestamp qu'il était il y a 5 minutes : 'WHERE timestamp < ' . $timestamp_5min Le plus "dur" est de retrouver le timestamp qu'il était il y a 5 minutes. Il suffit de soustraire 60 * 5 (le nombre de secondes en 5 min) au timestamp actuel, et le tour est joué ! 
+Étape 5 : améliorez ce script !
+Là, je dois reconnaître que j'ai franchement pas beaucoup d'idées pour améliorer ce script. V oici ce que je peux vous proposer, mais je vous préviens que ça n'a rien de très excitant : Affichez "Il y a 1 visiteur connecté" au lieu de "Il y a 1 visiteurs connectés" pour respecter le singulier/pluriel (ah la bonne vieille grammaire française  ). V ous pouvez aussi créer un système de "record". À chaque fois que vous avez le nombre de visiteurs connectés, vous le comparez avec le record enregistré dans un fichier "record.txt" par exemple. V ous saurez faire cela lorsque vous aurez lu le chapitre sur les fichiers. Ce "record.txt" ne contiendra qu'un nombre : c'est le record du nombre de connectés. Si vous le désirez, vous pouvez aussi enregistrer dans le fichier la date à laquelle le record s'est produit (utilisez un timestamp !). Modifiez le script pour qu'il marche sur plusieurs sites différents à la fois. Ensuite, créez un site où vous proposez ce service aux petits webmasters débutants pour seulement 10 euros, devenez riche, rachetez Microsoft, ruinez Bill Gates, et devenez enfin Maître du Monde. 
+V ous voyez, comme quoi, même avec un petit script comme celui-ci, on peut faire des tas de choses étonnantes. J'espère que ce TP vous aura été utile, je pense que nombreux d'entre vous sont ceux qui souhaitaient avoir un tel compteur sur leur site !
+Ah, et si vous rachetez Microsoft, soyez cool : pensez à moi, je ne dirais pas non si on m'offrait ne serait-ce qu'1% de l'entreprise.
+
+				
+				</div>
+
+									<!-- Sidebar -->
+
+										
+kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll
+									<!-- Content -->
+
+										
+									
+									
+										
+										
+									
+								
+
+		<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<section class="col-3 col-6-narrower col-12-mobilep">
+								<h3>PROGRAMME</h3>
+								<ul class="links">
+									<li>KINDER GARTEN</li>
+									<li>PRIMMAIRE</li>
+									<li>NOUVEAU SECONDAIRE</li>
+									<li>DE KINDER GARTEN A NS 4</li>
+									
+								</ul>
+							</section>
+							<section class="col-3 col-6-narrower col-12-mobilep">
+								<h3>HORRAIRE</h3>
+								<ul class="links">
+									<li>NOUS FONCTIONNONS EN DEUX VACATIONS</li>
+									<li>MATIN</li>
+									<li>7 H - 2 H</li>
+									<li>MIDI</li>
+									<li>1 H - 7 H</li>
+									
+								</ul>
+							</section>
+							<section class="col-6 col-12-narrower">
+								<h3>FAITES NOUS UN REMARQUE</h3>
+								<form>
+									<div class="row gtr-50">
+										<div class="col-6 col-12-mobilep">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="col-6 col-12-mobilep">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="col-12">
+											<textarea name="message" id="message" placeholder="Message" rows="5"></textarea>
+										</div>
+										<div class="col-12">
+											<ul class="actions">
+												<li><input type="submit" class="button alt" value="ENVOYEZ Message" /></li>
+											</ul>
+										</div>
+									</div>
+								</form>
+							</section>
+						</div>
+					</div>
+
+					<!-- Icons -->
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-whatsapp"><span class="label">WHATSAPP</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">FACEBOOK</span></a></li>
+							
+		
+						</ul>
+
+					<!-- Copyright -->
+						<div class="copyright">
+							<ul class="menu">
+								<li>&copy; WSpromo. All rights reserved</li><li>Design: <a href="http://wspromo.netlify.app">WSpromo contact</a></li>
+							</ul>
+						</div>
+
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
